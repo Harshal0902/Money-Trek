@@ -72,7 +72,7 @@ export default function Trips() {
                             setSelected(marker);
                         }}
                         icon={{
-                            url: `https://img.icons8.com/doodle/55/000000/large-tree.png`,
+                            url: `https://img.icons8.com/office/16/000000/convertible.png`,
                             origin: new window.google.maps.Point(0, 0),
                             anchor: new window.google.maps.Point(15, 15),
                             scaledSize: new window.google.maps.Size(30, 30),
@@ -88,11 +88,7 @@ export default function Trips() {
                         }}
                     >
                         <div>
-                            <h2>
-                                <img src="https://img.icons8.com/fluent/20/000000/fire-alarm-button.png" />
-                                &nbsp; Alert
-                            </h2>
-                            <p>Spotted cutting tree at {formatRelative(selected.time, new Date())}</p>
+                           Visited at {formatRelative(selected.time, new Date())}
                         </div>
                     </InfoWindow>
                 ) : null}

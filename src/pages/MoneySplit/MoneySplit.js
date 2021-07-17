@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./MoneySplit.scss"
@@ -6,34 +6,34 @@ import Fade from 'react-reveal/Fade';
 
 class MoneySplit extends React.Component {
 
-    
     constructor() {
         super();
         this.state = {
             bill: "",
             numPeople: " ",
             split: " "
-        }
+        };
     };
-    
+
     handlebill = (event) => {
         this.setState({
             bill: event.target.value
         })
     }
-    
+
     handlenumpeople = (event) => {
         this.setState({
             numpeople: event.target.value
         })
     }
-    
+
     exe = (e) => {
         e.preventDefault();
         this.setState({ split: parseInt(this.state.bill) / parseInt(this.state.numpeople) })
     }
-    
+
     render() {
+
         return (
             <Container>
 
@@ -46,9 +46,9 @@ class MoneySplit extends React.Component {
 
                                 <form onSubmit={this.exe}>
 
-                                    <div style={{cursor: "pointer"}} className="upload-btn-wrapper">
-                                        <button style={{cursor: "pointer"}}  className="btn">Upload a file</button>
-                                        <input style={{cursor: "pointer"}}  type="file" name="myfile" />
+                                    <div style={{ cursor: "pointer" }} className="upload-btn-wrapper">
+                                        <button style={{ cursor: "pointer" }} className="btn">Upload a file</button>
+                                        <input style={{ cursor: "pointer" }} type="file" name="myfile" />
                                     </div>
 
                                     <div className="orOption">Or</div>
@@ -81,6 +81,7 @@ class MoneySplit extends React.Component {
                                     <button type="submit" className="splitBill_btn">Split Bill</button>
 
                                     <div className="result">Payment per head: {this.state.split}</div>
+
                                 </form>
 
                             </Col>

@@ -87,6 +87,7 @@ const steps = [
   {
     id: "selectServices",
     options: [
+      {value: "Home", label: "Go to Home", trigger: "selectedService"},
       { value: "Split Bills", label: "Split Bills", trigger: "selectedService" },
       { value: "Trips", label: "Trips", trigger: "selectedService" },
       { value: "goBack", label: "go back", trigger: "options" },
@@ -135,7 +136,7 @@ function Chatbot() {
 
   const handleEnd = ({ steps, values }) => {
     switch (values[values.length - 1]) {
-      case "home":
+      case "Go to Home":
         history.push("/");
         break;
       case "Split Bills":

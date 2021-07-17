@@ -1,21 +1,24 @@
 import React from 'react'
 import { Container, Row, Col } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import BillSplitImg from "../../assets/home.png"
 import "./Home.scss"
+import { useTranslation } from 'react-i18next'
 
 export default function Home() {
+    const { t } = useTranslation();
     return (
         <Container className="Intro">
             <Row>
                 <Col md={6} className="about-description">
-                    <h1>Better solutions for trip</h1>
-                    <p>Money Trek is a use money splitting web app where you can keep track of your budgets and calculate how much money you have to give or take from your friends. This web app can be very useful during trips and other occassions where calculation of budget and who pays for what is necessary.
-                    </p>
+                    <h1>{t('homeTilte')}</h1>
+                    <p>{t('homeDesc')}</p>
                 </Col>
 
                 <Col md={6} className="img_split">
-                    <img src={BillSplitImg} height="100px" className="img-fluid" alt="Split Bills" />
+                    <img src={BillSplitImg} className="img-fluid" alt="Split Bills" />
                 </Col>
+
             </Row>
         </Container>
     )

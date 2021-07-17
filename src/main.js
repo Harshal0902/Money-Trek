@@ -5,15 +5,12 @@ import Chatbot from "./components/Chatbot/Chatbot"
 import Home from "./pages/Home/Home"
 import MoneySplit from "./pages/MoneySplit/MoneySplit"
 import Trips from "./pages/Trips/Trips"
-import Fade from 'react-reveal/Fade';
 
 function Main() {
 
     return (
         <Router>
-            <Fade top>
-                <Header />
-            </Fade>
+            <Header style={{ zIndex: "5" }} />
             <Chatbot />
             <Switch>
                 <Route path='/' exact component={Home} />

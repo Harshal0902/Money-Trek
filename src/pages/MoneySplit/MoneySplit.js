@@ -6,6 +6,7 @@ import Fade from 'react-reveal/Fade';
 
 class MoneySplit extends React.Component {
 
+    
     constructor() {
         super();
         this.state = {
@@ -14,24 +15,24 @@ class MoneySplit extends React.Component {
             split: " "
         }
     };
-
+    
     handlebill = (event) => {
         this.setState({
             bill: event.target.value
         })
     }
-
+    
     handlenumpeople = (event) => {
         this.setState({
             numpeople: event.target.value
         })
     }
-
+    
     exe = (e) => {
         e.preventDefault();
         this.setState({ split: parseInt(this.state.bill) / parseInt(this.state.numpeople) })
     }
-
+    
     render() {
         return (
             <Container>

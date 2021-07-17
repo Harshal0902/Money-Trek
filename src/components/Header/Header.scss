@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
+    z-index: 10;
 }
 
 .header-logo {
@@ -136,3 +137,28 @@
         display: none;
     }
 }
+
+.dropdown {
+    position: relative;
+    margin-top: 25px;
+    display: inline-block;
+    color: white;
+    z-index: 5;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 5px 16px;
+    border-radius: 10px;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    color: black;
+  }

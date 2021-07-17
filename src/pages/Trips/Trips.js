@@ -4,11 +4,12 @@ import usePlacesAutocomplete, { getGeocode, getLatLng, } from "use-places-autoco
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
 import { formatRelative } from "date-fns";
 import "@reach/combobox/styles.css";
+import { useTranslation } from 'react-i18next'
 import "./Trips.scss"
 
 const mapContainerStyle = {
     left: "15vw",
-    top: "5rem",
+    top: "2rem",
     bottom: "5rem",
     height: "70vh",
     width: "70vw",
@@ -23,6 +24,8 @@ const center = {
 };
 
 export default function Trips() {
+    const { t } = useTranslation();
+
     const [markers, setMarkers] = React.useState([]);
     const [selected, setSelected] = React.useState(null);
 
@@ -49,7 +52,7 @@ export default function Trips() {
 
     return (
         <div>
-            <h1 className="heading">Add the places where you visit
+            <h1 className="heading">{t('tripTitle')}
             </h1>
 
             <Locate panTo={panTo} />

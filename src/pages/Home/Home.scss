@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn:ital@1&display=swap");
 
 .Intro {
-  height: 89.5vh;
+  position: relative;
 }
 
 .Intro h1 {
@@ -25,5 +25,19 @@
 }
 
 .img_split {
-  padding: 50px;
+  z-index: 1;
+  margin-top: 100px;
 }
+
+
+
+// .cards {
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   display: grid;
+//   grid-gap: 1rem;
+// }
+
+// @media (min-width: 600px) {
+//   .cards { grid-template-columns: repeat(2, 1fr); }
+// }

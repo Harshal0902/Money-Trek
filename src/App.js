@@ -3,6 +3,7 @@ import './App.scss';
 import fire from "./fire"
 import Main from "./main"
 import Login from "./pages/Login/login"
+import "./i18n"
 
 const App = () => {
   const [user, setUser] = useState("");

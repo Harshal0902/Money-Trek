@@ -1,11 +1,14 @@
 .heading {
   place-items: center;
   text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-weight: bolder;
+  font-size: 3.2rem;
+  margin-top: 30px;
 }
 
 .search {
   position: absolute;
-  top: 13rem;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -22,7 +25,7 @@
 .locate {
   position: absolute;
   top: 15rem;
-  right: 30rem;
+  right: 17rem;
   background: none;
   border: none;
   z-index: 10;

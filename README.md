@@ -30,7 +30,7 @@ Money Trek is a money splitting web app where you can keep track of your budgets
 
 - Forntend: React Js
 - Backend: Django
-- Database:
+- Database: CockroachDB
 
 ## 🧠 Challenges we ran into
 
@@ -47,7 +47,7 @@ How to integrate backend Django with React frontend, collaboration.
 ## 🚀 What's next for Gam-Learn
 
 - Adding more languages
-- Infromation of nearby place(eg. hotal, restaurent)
+- Infromation of nearby place(eg. hotel, restaurent)
 
 ## Installing and running
 

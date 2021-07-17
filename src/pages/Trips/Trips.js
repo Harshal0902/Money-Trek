@@ -5,6 +5,8 @@ import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption 
 import { formatRelative } from "date-fns";
 import "@reach/combobox/styles.css";
 import { useTranslation } from 'react-i18next'
+import CompassImg from "../../assets/compass.png"
+import Fade from 'react-reveal/Fade';
 import "./Trips.scss"
 
 const mapContainerStyle = {
@@ -51,52 +53,54 @@ export default function Trips() {
     }, []);
 
     return (
-        <div>
-            <h1 className="heading">{t('tripTitle')}
-            </h1>
+        <Fade bottom>
+            <div>
+                <h1 className="heading">{t('tripTitle')}
+                </h1>
 
-            <Locate panTo={panTo} />
-            <Search panTo={panTo} />
+                <Locate panTo={panTo} />
+                <Search panTo={panTo} />
 
-            <GoogleMap
-                id="map"
-                mapContainerStyle={mapContainerStyle}
-                zoom={8}
-                center={center}
-                options={options}
-                onClick={onMapClick}
-                onLoad={onMapLoad}
-            >
-                {markers.map((marker) => (
-                    <Marker
-                        key={`${marker.lat}-${marker.lng}`}
-                        position={{ lat: marker.lat, lng: marker.lng }}
-                        onClick={() => {
-                            setSelected(marker);
-                        }}
-                        icon={{
-                            url: `https://img.icons8.com/office/16/000000/convertible.png`,
-                            origin: new window.google.maps.Point(0, 0),
-                            anchor: new window.google.maps.Point(15, 15),
-                            scaledSize: new window.google.maps.Size(30, 30),
-                        }}
-                    />
-                ))}
+                <GoogleMap
+                    id="map"
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={8}
+                    center={center}
+                    options={options}
+                    onClick={onMapClick}
+                    onLoad={onMapLoad}
+                >
+                    {markers.map((marker) => (
+                        <Marker
+                            key={`${marker.lat}-${marker.lng}`}
+                            position={{ lat: marker.lat, lng: marker.lng }}
+                            onClick={() => {
+                                setSelected(marker);
+                            }}
+                            icon={{
+                                url: `https://img.icons8.com/office/16/000000/convertible.png`,
+                                origin: new window.google.maps.Point(0, 0),
+                                anchor: new window.google.maps.Point(15, 15),
+                                scaledSize: new window.google.maps.Size(30, 30),
+                            }}
+                        />
+                    ))}
 
-                {selected ? (
-                    <InfoWindow
-                        position={{ lat: selected.lat, lng: selected.lng }}
-                        onCloseClick={() => {
-                            setSelected(null);
-                        }}
-                    >
-                        <div>
-                            Visited at {formatRelative(selected.time, new Date())}
-                        </div>
-                    </InfoWindow>
-                ) : null}
-            </GoogleMap>
-        </div>
+                    {selected ? (
+                        <InfoWindow
+                            position={{ lat: selected.lat, lng: selected.lng }}
+                            onCloseClick={() => {
+                                setSelected(null);
+                            }}
+                        >
+                            <div>
+                                Visited at {formatRelative(selected.time, new Date())}
+                            </div>
+                        </InfoWindow>
+                    ) : null}
+                </GoogleMap>
+            </div>
+        </Fade>
     );
 }
 
@@ -117,7 +121,7 @@ function Locate({ panTo }) {
                 );
             }}
         >
-            <img src="https://img.icons8.com/emoji/48/000000/compass-emoji.png" alt="compass" />
+            <img width="20px" src={CompassImg} alt="compass" />
         </button>
     );
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/general/split.css">
+    <title>Split The bills</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/js/uikit-icons.min.js"></script>
+
+    <style>
+        main{
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
+    
+            <ul class="uk-navbar-nav">
+                <li><a href="/">Dashboard</a></li>
+                
+                <li class="uk-active"><a href="/split">New split</a></li>
+                <li><a href="/pendingpayments">Pending Payments</a></li>
+                <li><a href="/travel">My Journey</a></li>
+            </ul>
+    
+        </div>
+        <div class="uk-navbar-right" style="margin-right: 20px;">
+    
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a href="#">{{ user }}</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a href="/accounts">My Account</a></li>
+                            <li><a href="/signout">Signout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section>
+        <main>
+            <h1 class="greet">Split your Bills</h1>
+            <form method = 'POST' class="form" enctype="multipart/form-data">  
+                {% csrf_token %}
+                <input type = "file" name = 'myfile' id="myfile" required>
+                <p><button class="submitb" type = "submit">Publish</button></p>
+            </form>
+
+            <form action="" method="post">
+                <input type="text" name="ammount" id="ammount" placeholder="Ammount">
+                <input type="button" class="submitb" value="submit">
+            </form>
+        </main>
+    </section>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/general/split.css">
+    <title>PendingPayments</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/js/uikit-icons.min.js"></script>
+    <style>
+        .card {
+            width: 60%;
+            height: 80px;
+            border-radius: 15px;
+            background-color: rgb(171, 170, 207);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 10px;
+        }
+        main{
+            height: 70vh;
+            margin-top: -70px;
+        }
+        body{
+            height: 70vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
+    
+            <ul class="uk-navbar-nav">
+                <li><a href="/">Dashboard</a></li>
+                
+                <li><a href="/split">New split</a></li>
+                <li><a class="uk-active" href="/pendingpayments">Pending Payments</a></li>
+                <li><a href="/travel">My Journey</a></li>
+            </ul>
+    
+        </div>
+        <div class="uk-navbar-right" style="margin-right: 20px;">
+    
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a href="#">{{ user }}</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a href="/">My Account</a></li>
+                            <li><a href="/signout">Signout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section>
+        <main style="padding-top:60px;">
+            {% for i in data %}
+            <div class="card" id="{{ i.id }}" style="margin: auto;">
+                <p>{{ i.creator }}</p>
+                <p>{{ i.ammount }}</p>
+                <p>{{ i.time }}</p>
+                <input type="button" value="Pay" onclick="paid('{{ i.id }}')">
+            </div>
+            <hr>
+            {% endfor %}
+        </main>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+
+    <script type="text/javascript">
+        console.log(Cookies.get('csrftoken'));
+
+        function paid(username) {
+            var catid;
+            catid = $(this).attr("data-catid");
+            console.log(username)
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "/paythebills/" + username,
+                    headers: { 'X-CSRFToken': Cookies.get('csrftoken') },
+                    data: {
+                        post_id: catid
+                    },
+                    success: function (data) {
+                        $('#'+username).remove();
+                        $('.isadded').text(data);
+                        console.log(data)
+                    }
+                }).done(json => console.log(json));
+        }
+    </script>
+
+</body>
+
+</html>

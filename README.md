@@ -3,8 +3,8 @@ Project build for Bon Voyage Hacks
 
 ## To-do
 - [x] Lofin/Sign Up
-- [ ] Dashboard(quick intro)
+- [x] Dashboard(quick intro)
 - [ ] Bill splitting screen
-- [ ] Map with on-click marker
+- [x] Map with on-click marker
 - [x] Chatbot
 - [ ] Multilanguage

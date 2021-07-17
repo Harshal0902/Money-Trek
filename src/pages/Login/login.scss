@@ -53,14 +53,10 @@ button {
   padding: 60px;
   margin: auto;
   width: 123%;
-  // max-width: 420px;
-  min-height: 600px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: white;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
 }
 
 .loginContainer label {
@@ -79,10 +75,8 @@ button {
   padding: 10px;
   margin-top: -30px;
   background: rgba(255, 255, 255, 0.1);
-  /* color: #fff; */
   letter-spacing: 1px;
   border-radius: 10px;
-  /* border: 2px solid rgb(17, 17, 19); */
   background: transparent;
   border-bottom: 2px solid #9b9b9b;
 }
@@ -118,8 +112,28 @@ button {
 
 .logo-Heading {
   color: #603bbb;
-  padding-left: 18%;
   font-weight: 800;
   font-size: 5rem;
   font-family: "Dancing Script", cursive;
+}
+
+.login__or {
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+}
+
+.login__or__text {
+  z-index: 2;
+  background-color: white;
+  padding: 2px 8px;
+}
+
+.login__bar {
+  // w-36 h-1 rounded-full bg-indigo-500 inline-flex
+  width: 24rem;
+  height: 0.2rem;
+  background-color: #603bbb;
+  margin-bottom: -60px;
+  z-index: 1;
 }

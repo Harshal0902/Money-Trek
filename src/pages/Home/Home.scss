@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Libre+Baskerville:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn:ital@1&display=swap");
+
+.Intro {
+  height: 89.5vh;
+}
+
+.Intro h1 {
+  font-family: "Dancing Script", cursive;
+  margin: 0 0 10px 0;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: black;
+  padding-left: 50px;
+  padding-top: 180px;
+}
+
+.Intro p {
+  font-family: "Vollkorn", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  width: 50vw;
+  color: black;
+  padding-right: 200px;
+}
+
+.img_split {
+  padding: 50px;
+}

@@ -88,7 +88,7 @@ export default function Trips() {
                         }}
                     >
                         <div>
-                           Visited at {formatRelative(selected.time, new Date())}
+                            Visited at {formatRelative(selected.time, new Date())}
                         </div>
                     </InfoWindow>
                 ) : null}
@@ -154,12 +154,6 @@ function Search({ panTo }) {
     return (
         <div className="search" style={{ marginTop: "110px", left: "550px" }}>
             <Combobox onSelect={handleSelect}>
-                <ComboboxInput
-                    value={value}
-                    onChange={handleInput}
-                    disabled={!ready}
-                    placeholder="Search your location"
-                />
                 <ComboboxPopover>
                     <ComboboxList>
                         {status === "OK" &&

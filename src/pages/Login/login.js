@@ -1,6 +1,6 @@
+import React from 'react'
 import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from 'react'
 import Study from "../../assets/login.jpg"
 import "./login.scss"
 import Fade from 'react-reveal/Fade';
@@ -34,13 +34,13 @@ const Login = (props) => {
                                 <div className="btnContainer">
                                     {hasAccount ? (
                                         <>
-                                            <button onClick={handleSignup}>Sign Up</button>
+                                            <button className="login__btn" onClick={handleSignup}>Sign Up</button>
                                             <p>Have an account ?{" "}
                                                 <span onClick={() => setHasAccount(!hasAccount)}>Sign In</span></p>
                                         </>
                                     ) : (
                                         <>
-                                            <button onClick={handleLogin}>Sign In</button>
+                                            <button className="login__btn" onClick={handleLogin}>Sign In</button>
                                             <p>Dont't have an account ?{" "}
                                                 <span onClick={() => setHasAccount(!hasAccount)}>Sign Up</span></p>
                                         </>

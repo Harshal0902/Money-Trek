@@ -5,7 +5,8 @@ from authentication.models import profile, friend_list,recieve_request,sent_requ
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from .bill import extract_bill
-
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 @login_required
 def add_friend(request,slug):
@@ -88,17 +89,18 @@ def recieved_requests(request):
     }
     return render(request,'requests.html',context=context)
 
+@login_required
 def split(request):
     if request.method == 'POST':
         if request.FILES['myfile']:
             myfile = request.FILES['myfile']
             fs = FileSystemStorage(location='media/bills/')
             filename = fs.save(myfile.name, myfile)
-            #url = 'http://127.0.0.1:8000/media/bill/'+filename    un comments these line after production to enable those features of AI
-            #retrived_data = extract_bill(url)
-            #print(retrived_data)
+            #url = 'http://127.0.0.1:8000/media/bill/'+filename    #un comments these line after production to enable those features of AI
+            retrived_data = extract_bill(str(BASE_DIR/'media/bills/')+"/"+filename)
+            print(retrived_data)
             request_user = request.user
-            total = 100 # temperory
+            total = retrived_data[0]['total']
             friends = friend_list.objects.get(user = request_user)
             number_of_friends = friends.friend_count
             ammount_paid = total/(number_of_friends+1)

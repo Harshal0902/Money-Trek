@@ -1,11 +1,13 @@
-def extract_bill(bill_url):
+def extract_bill(bill_image_path):
     from azure.ai.formrecognizer import FormRecognizerClient, FormTrainingClient
     from azure.core.credentials import AzureKeyCredential
     import json
 
     config = { "endpoint": "https://money-trek.cognitiveservices.azure.com/","key": "2094f3aedac24767ac42be835e78fec4"}
     client = FormRecognizerClient(config["endpoint"], AzureKeyCredential(config["key"]))
-    receipt_recognizer = client.begin_recognize_receipts_from_url(bill_url)
+    
+    f =  open(bill_image_path, "rb")
+    receipt_recognizer = client.begin_recognize_receipts(f)
     receipt_recognizer = receipt_recognizer.result()
     receipt = receipt_recognizer[0].to_dict()
     try:
@@ -31,4 +33,3 @@ def extract_bill(bill_url):
         'total' : Total
     }]
     return result
- 

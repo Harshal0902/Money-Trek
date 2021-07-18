@@ -5,8 +5,9 @@ import json
 config = json.load(open("config.json"))
 client = FormRecognizerClient(config["endpoint"], AzureKeyCredential(config["key"]))
 
-def extract_bill(bill_url):
-    receipt_recognizer = client.begin_recognize_receipts_from_url(bill_url)
+def extract_bill(bill_image_path):
+    f =  open(bill_image_path, "rb")
+    receipt_recognizer = client.begin_recognize_receipts(f)
     receipt_recognizer = receipt_recognizer.result()
     receipt = receipt_recognizer[0].to_dict()
     try:
@@ -32,4 +33,3 @@ def extract_bill(bill_url):
         'total' : Total
     }]
     return result
- 

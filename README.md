@@ -8,7 +8,7 @@ The name is a combination of two words **Money** and **Trek**. **Trek** is a hom
 
 ## 💡 Inspiration
 
-Wnenever We plan a trip we
+Whenever I plan a trip with my friends, it becomes very hard for me to keep track of my budget during the trip, and handling various bills is very hard.
 
 ## 💻 What it does
 
@@ -47,6 +47,6 @@ How to integrate backend Django with React frontend, collaboration.
 ## Installing and running
 
 ```
-npm install
-npm start
+pip install requirements.txt
+python manage.py runserver
 ```

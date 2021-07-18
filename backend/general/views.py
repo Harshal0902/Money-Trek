@@ -94,9 +94,8 @@ def split(request):
             myfile = request.FILES['myfile']
             fs = FileSystemStorage(location='media/bills/')
             filename = fs.save(myfile.name, myfile)
-            #url = 'http://127.0.0.1:8000/media/bill/'+filename    un comments these line after production to enable those features of AI
-            #retrived_data = extract_bill(url)
-            #print(retrived_data)
+            retrived_data = extract_bill('media/bills/'+str(myfile.name))
+            print(retrived_data)
             request_user = request.user
             total = 100 # temperory
             friends = friend_list.objects.get(user = request_user)

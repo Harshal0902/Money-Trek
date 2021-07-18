@@ -9,7 +9,7 @@ class profile(models.Model):
     name = models.CharField(max_length=60)
     mobile = models.CharField(max_length=15)
     email = models.EmailField()
-    image = models.ImageField(upload_to="profile_pictures",null = True, blank = True)
+    image = models.ImageField(upload_to="profile_pictures",default="profile_pictures/profile.jpg")
 
     def __str__(self):
         return str(self.user)

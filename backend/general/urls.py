@@ -11,6 +11,7 @@ urlpatterns = [
     path('split',split),
     path('recieved',recieved_requests),
     path('acceptfriend/<slug:slug>',accept_friend),
+    path('travel',travel),
     path('addfriend/<slug:slug>',add_friend),
     path('findfriends',findfriend),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

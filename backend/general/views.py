@@ -7,6 +7,8 @@ from django.core.files.storage import FileSystemStorage
 from .bill import extract_bill
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+from django.db.models import Q
+from location.models import previous_locations
 
 @login_required
 def add_friend(request,slug):
@@ -17,6 +19,7 @@ def add_friend(request,slug):
         temp2 = recieve_request()
         temp.from_user = current_user
         temp.to_user = target_user
+        temp.is_accepted = True
         temp.save()
         temp2.from_user = current_user
         temp2.to_user = target_user
@@ -37,6 +40,7 @@ def accept_friend(request,slug):
         side1 = friend_list.objects.get(user = current_user)
         side1.friends.add(target_user)
         side1.friend_count+=1
+        side1.save()
         
         try:
             side2 = friend_list.objects.get(user = target_user)
@@ -48,6 +52,7 @@ def accept_friend(request,slug):
         side2 = friend_list.objects.get(user = target_user)
         side2.friends.add(current_user)
         side2.friend_count+=1
+        side2.save()
         requests = recieve_request.objects.get(from_user = target_user)
         requests.delete()
         instance = sent_request.objects.get(from_user = target_user)
@@ -65,9 +70,31 @@ def search(request,slug):
 
 @login_required
 def default(request):
-    list_of_users = User()
-    data = list_of_users.username
-    return render(request,'accounts.html')
+    if request.method=='POST':
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage(location='media/profile_pictures/')
+        filename = fs.save(myfile.name, myfile)
+  
+        usr = User.objects.get(username = (request.user).username)
+        try:
+            prof = profile.objects.get(user = usr)
+        except:
+            temp = profile()
+            temp.user = usr
+            temp.save()
+        prof = profile.objects.get(user = usr)
+        prof.name = request.POST.get('name')
+        prof.email = request.POST.get('email')
+        prof.monile = request.POST.get('mobile')
+        prof.image = "/profile_pictures/"+filename
+        prof.save()
+        return redirect('/')
+    profle = profile.objects.get(user = request.user)
+    context = {
+        'data':profle
+    }
+    print(context)
+    return render(request,'accounts.html',context=context)
 
 @login_required
 def all_users(request):
@@ -123,7 +150,13 @@ def split(request):
             return redirect('pendingPayment')
         else:
             pass
-    return render(request,'split.html')
+        
+    ontrip = friend_list.objects.get(user = request.user)
+    ontrip = ontrip.friends.all()
+    context = {
+        'data':ontrip
+    }
+    return render(request,'split.html',context=context)
 
 def pendingPayment(request):
     user = request.user
@@ -139,8 +172,36 @@ def paybills(request,slug):
     return HttpResponse("Success:")
 
 def findfriend(request):
-    profiles = profile.objects.all()
+    exclusion = []
+    x = friend_list.objects.get(user = request.user)
+    for i in x.friends.all():
+        exclusion.append(i)
+    sented = sent_request.objects.filter(from_user = request.user)
+    already = []
+    for i in sented:
+        exclusion.append(i.to_user)
+        already.append(profile.objects.get(user = i.to_user))
+    print(already)
+    exclusion.append(User.objects.get(username = (request.user).username))
+    profs = profile.objects.all().exclude(user__in=exclusion)
     context = {
-        'data':profiles
+        'profiles': profs,
+        'sented':already
     }
     return render(request,'findfriends.html',context=context)
+
+def travel(request):
+    if request.method=='POST':
+        map = previous_locations()
+        map.user = request.user
+        map.longitude = request.POST.get('longi')
+        map.latitude = request.POST.get('lati')
+        map.save()
+        return redirect('/travel')
+    
+    locations = previous_locations.objects.filter(user = request.user)
+    context = {
+        'data':locations
+    }
+    return render(request,'travel.html',context=context)
+

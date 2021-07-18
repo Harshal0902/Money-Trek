@@ -7,8 +7,6 @@
 section{
     min-height: 100vh;
     width: 100%;
-    background-color: white;
-    background: linear-gradient(to right top, #65dfc9 ,#6cdbeb);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -24,45 +22,46 @@ main{
     display: flex;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(to bottom left, rgba(225,255,255,0.5),rgba(255,255,254,0.8));
+    border: 1px solid blue;
 }
 
 
-.form{
-    margin-top: -40px;
+.card{
+    border: 1px solid blue;
+    border-radius: 5px;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(54, 38, 38, 0.575);
+}
+.close{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 0, 0.692);
     display: flex;
-    flex-direction: column;
-    width: 80%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 70px;
+    top: 80px;
+}
+.close:hover{
+    box-shadow: 1px 1px 30px rgba(255, 255, 0, 0.514);
+    z-index: 10;
+}
+.imagewrapper{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.value{
-    height: 30px;
-    width: 100%;
-    margin: 10px;
-    border-radius: 10px;
-    border: none;
-}
-
-.submitb{
-    border-radius: 5px;
-    text-align: center;
-    height: 20px;
-    border: none;
-    border-radius: 0;
-    outline: 1px solid blue;
-    width: 50px;
-    margin-top: 25px;
-}
-
-.greet{
-
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-bottom: -30px;
-    color: rgb(68, 18, 18);
-}
-
-.form{
-    margin-top: 100px;
-    height: 100px;
+.buttonb{
+    padding: 2px;
+    font-family: monospace;
 }

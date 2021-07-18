@@ -37,7 +37,7 @@ We are happy that we completed the project in this short frame of time and we le
 
 ## 📖 What we learned
 
-How to integrate backend Django with React frontend, collaboration.
+How to integrate backend Django backend, Bill Recognition system, collaboration.
 
 ## 🚀 What's next for Money Trek
 

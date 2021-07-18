@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
+import MoneyTrekLogo from "../../assets/Money_Trek_Logo.gif"
 import LogoutImg from "../../assets/logout.png"
 import fire from "../../fire"
 import i18n from '../../i18n'
@@ -27,7 +28,7 @@ function Header() {
         <>
                 <nav className='header'>
                     <Link to='/' className='header-logo' onClick={closeMobileMenu}>
-                        Money Trek
+                       <img height="80px" src={MoneyTrekLogo} alt="logo" />
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

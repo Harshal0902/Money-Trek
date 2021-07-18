@@ -44,7 +44,7 @@ We are happy that we completed the project in this short frame of time and we le
 
 How to integrate backend Django with React frontend, collaboration.
 
-## 🚀 What's next for Gam-Learn
+## 🚀 What's next for Money Trek
 
 - Adding more languages
 - Infromation of nearby place(eg. hotel, restaurent)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Study from "../../assets/login.jpg"
+import MoneyTrekLogin from "../../assets/Money_Trek.gif"
 import "./login.scss"
 import Fade from 'react-reveal/Fade';
 
@@ -20,7 +20,7 @@ const Login = (props) => {
                 <div className="login-box">
                     <Row>
                         <Col md={6} className="img">
-                            <img src={Study} className="img-fluid" alt="Me" />
+                            <img src={MoneyTrekLogin} className="img-fluid" alt="Me" />
                         </Col>
                         <Col md={6} className="login-signup">
                             <div className="loginContainer">

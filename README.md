@@ -1,6 +1,10 @@
-# Money-Trek
+# Money Trek
 
-Project build for Bon Voyage Hacks
+Manage your expenses while traveling with just a click of the bill and we will do the rest.
+
+## Why the name **Money Trek**
+
+The name is a combination of two words **Money** and **Trek**. **Trek** is a homonym for **Track** and we built this app keeping travel expenses in mind hence **Trek**.
 
 ## 💡 Inspiration
 
@@ -19,7 +23,7 @@ Money Trek is a money splitting web app where you can keep track of your budgets
 
 ## 🔨 How we built it
 
-- Forntend: React Js
+- Forntend: HTML, CSS, Javascript
 - Backend: Django
 - Database: CockroachDB
 
